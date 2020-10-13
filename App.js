@@ -1,21 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useRef } from "react";
+import { Text, View, ActivityIndicator, Image } from "react-native";
 
 export default function App() {
+  const randomNum = useRef(Math.random()).current;
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{ marginHorizontal: 40, marginVertical: 60 }}>
+      <Text style={{ fontWeight: "bold", fontSize: 24, marginBottom: 30 }}>
+        Hello React Native
+      </Text>
+      <ActivityIndicator
+        size="large"
+        color="#c1262c"
+        style={{ marginBottom: 30 }}
+      />
+      <Image
+        source={{
+          uri: `https://picsum.photos/500/300?random=${randomNum}`
+        }}
+        style={{ width: "100%", height: 160, marginBottom: 30 }}
+      />
+      <View
+        style={{
+          borderWidth: 2,
+          borderColor: "black",
+          padding: 20,
+          marginBottom: 30
+        }}
+      >
+        <Text>Hello again!</Text>
+      </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
