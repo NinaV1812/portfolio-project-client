@@ -1,0 +1,1 @@
+export const apiUrl =  `https://api.themoviedb.org/3/genre/movie/list?api_key=0f9d53792bd5deaacc609c8e93ec4148&language=en-US`

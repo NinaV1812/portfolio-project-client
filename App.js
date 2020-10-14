@@ -1,20 +1,22 @@
 import React, { useRef } from "react";
 import { Text, View, ActivityIndicator, Image } from "react-native";
-import GameStartPage from "./components/first page"
+import GameStartPage from "./components/first-page"
+import {Provider} from "react-redux"
+import { applyMiddleware, createStore } from "redux";
+import combineReducers from "./store/rootReducer"
+import thunk from "redux-thunk"
+
+const store = createStore(combineReducers, applyMiddleware(thunk))
 
 export default function App() {
   const randomNum = useRef(Math.random()).current;
 
   return (
+    <Provider store={store}>
     <View style={{ marginHorizontal: 40, marginVertical: 60 }}>
       <Text style={{ fontWeight: "bold", fontSize: 24, marginBottom: 30 }}>
         Hello React Native
       </Text>
-      <ActivityIndicator
-        size="large"
-        color="#c1262c"
-        style={{ marginBottom: 30 }}
-      />
       <Image
         source={{
           uri: `https://picsum.photos/500/300?random=${randomNum}`
@@ -33,5 +35,6 @@ export default function App() {
         <Text>Hello again!</Text>
       </View>
     </View>
+    </Provider>
   );
 }
