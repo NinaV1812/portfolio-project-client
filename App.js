@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { Text, View, ActivityIndicator, Image } from "react-native";
+import GameStartPage from "./components/first page"
 
 export default function App() {
   const randomNum = useRef(Math.random()).current;
@@ -20,6 +21,7 @@ export default function App() {
         }}
         style={{ width: "100%", height: 160, marginBottom: 30 }}
       />
+      <GameStartPage/>
       <View
         style={{
           borderWidth: 2,
