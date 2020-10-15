@@ -32,10 +32,10 @@ export default function App() {
   });
 
   return (
-    <NavigationContainer>
-      <ScrollView style={styles.scrollView}>
-        <Provider store={store}>
-          <View style={{ marginHorizontal: 40, marginVertical: 60 }}>
+    <Provider store={store}>
+      <MenuBar />
+      <NavigationContainer>
+        {/* <View style={{ marginHorizontal: 40, marginVertical: 60 }}>
             <Text
               style={{ fontWeight: "bold", fontSize: 24, marginBottom: 30 }}
             >
@@ -46,20 +46,19 @@ export default function App() {
                 uri: `https://picsum.photos/500/300?random=${randomNum}`,
               }}
               style={{ width: "100%", height: 160, marginBottom: 30 }}
-            />
-            <Stack.Navigator>
-              <Stack.Screen
-                name="Home"
-                component={GameStartPage}
-                options={{ title: "Welcome" }}
-              />
-              <Stack.Screen name="SecondPage" component={SecondPage} />
-            </Stack.Navigator>
-            {/* <GameStartPage /> */}
-            <MenuBar />
-          </View>
-        </Provider>
-      </ScrollView>
-    </NavigationContainer>
+            /> */}
+        <Stack.Navigator initialRouteName="GameStartPage">
+          <Stack.Screen
+            name="Home"
+            component={GameStartPage}
+            options={{ title: "Welcome" }}
+          />
+          <Stack.Screen name="SecondPage" component={SecondPage} />
+        </Stack.Navigator>
+        {/* <GameStartPage /> */}
+        {/* </View> */}
+        {/* </ScrollView> */}
+      </NavigationContainer>
+    </Provider>
   );
 }
