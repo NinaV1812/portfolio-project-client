@@ -8,14 +8,54 @@ export const fetchGenres = (genres) => ({
     payload: genres,
   });
 
+
+  export const getGame = (games) => ({
+    type: SET_UP_GAME,
+    payload: games,
+  });
+
+
   export const getGenres = () => {
       return async(dispatch, getState) => {
           try {
               const response = await axios.get(`${apiUrl}/genres`)
-                console.log("response", response)
-
+            //    console.log("response", response.data.genres)
+            const genres = response.data.genres;
+            dispatch(fetchGenres(genres))
           }catch (err) {
             (err.response)
           }
       }
   }
+
+  export const setUpGame = () => {
+    return async(dispatch, getState) => {
+        try {
+            const response = await axios.post(`${apiUrl}/set_up_game`,
+            {
+                code,
+                started
+            })
+    // console.log("Yep!", response);
+        }catch (err) {
+          (err.response)
+        }
+    }
+}
+
+export const joinTheGame = () => {
+    return async(dispatch, getState) => {
+        try {
+            const response = await axios.post(`${apiUrl}/join`,
+            {
+                gameId: game.id,
+                movieId,
+                title,
+                overview,
+            })
+    // console.log("Yep!", response);
+        }catch (err) {
+          (err.response)
+        }
+    }
+}
