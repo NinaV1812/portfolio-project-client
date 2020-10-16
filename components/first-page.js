@@ -44,7 +44,9 @@ export default function GameStartPage({ navigation }) {
         <Button
           icon={<Icon name="arrow-right" size={15} color="white" />}
           title="Go futher"
-          onPress={() => navigation.navigate("ThirdPage", { genre: genreList })}
+          onPress={() =>
+            navigation.navigate("StartGamePage", { genre: genreList })
+          }
         />
       </ScrollView>
     </View>

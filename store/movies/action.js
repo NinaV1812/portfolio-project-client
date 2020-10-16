@@ -30,15 +30,13 @@ export const getMovies = () => {
 export const setUpGame = (code, started) => {
   return async (dispatch, getState) => {
     try {
-      const response = await axios.post(
-        `http://192.168.178.11:4000/set_up_game`,
-        {
-          code,
-          started,
-        }
-      );
-      dispatch(StartGame());
+      const response = await axios.post(`http://127.0.0.1:4000/set_up_game`, {
+        code,
+        started,
+      });
       console.log("response", response);
+
+      dispatch(StartGame(response.data));
     } catch (err) {
       err.response;
     }

@@ -18,6 +18,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import ThirdPage from "./pages/third-page";
 import MenuBar from "./components/menu-bar";
 import socketIOClient from "socket.io-client";
+import StartGamePage from "./pages/second-page";
 
 const Stack = createStackNavigator();
 const store = createStore(combineReducers, applyMiddleware(thunk));
@@ -27,7 +28,7 @@ export default function App() {
     const socket = socketIOClient("ws://192.168.178.11:3000");
     // console.log("socket", socket);
     socket.on("swipe", (msg) => {
-      // dispatch();
+      dispatch();
       console.log("swipe erceved from socket", msg);
     });
     socket.on("connect_failed", function () {
@@ -63,6 +64,7 @@ export default function App() {
             component={GameStartPage}
             options={{ title: "Welcome" }}
           />
+          <Stack.Screen name="StartGamePage" component={StartGamePage} />
           <Stack.Screen name="ThirdPage" component={ThirdPage} />
         </Stack.Navigator>
       </NavigationContainer>

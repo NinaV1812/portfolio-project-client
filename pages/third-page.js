@@ -6,7 +6,6 @@ import { getMovies } from "../store/movies/action";
 import StartGamePage from "../pages/second-page";
 
 export default function ThirdPage({ route }) {
-  // console.log("genressss", route.params.genre);
   const genresToCompare = route.params.genre;
   const movies = useSelector(selectMovies);
   const dispatch = useDispatch();
@@ -14,6 +13,7 @@ export default function ThirdPage({ route }) {
   useEffect(() => {
     dispatch(getMovies());
   }, []);
+  // console.log("genresssss", genresToCompare);
   // console.log("moviesssss", movies);
   // const moviesToCompare = movies.filter((genre_ids) => {
   //   return genre_ids;
@@ -22,7 +22,6 @@ export default function ThirdPage({ route }) {
   return (
     <View>
       <Text>Hello Nina!</Text>
-      <StartGamePage />
     </View>
   );
 }
