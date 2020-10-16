@@ -1,3 +1,1 @@
-export const selectMovies = (state) => (
-  console.log("selector", state), state.movies
-);
+export const selectMovies = (state) => state.movies;

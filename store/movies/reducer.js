@@ -1,4 +1,4 @@
-import { FETCH_MOVIES } from "./action";
+import { FETCH_MOVIES, START_GAME } from "./action";
 const initialState = [];
 
 export default function (state = initialState, action) {
@@ -7,6 +7,9 @@ export default function (state = initialState, action) {
     case FETCH_MOVIES: {
       return action.payload;
     }
+    case START_GAME:
+      return [...state, action.payload];
+
     default:
       return state;
   }

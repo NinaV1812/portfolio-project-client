@@ -3,6 +3,7 @@ import { Text, View, ScrollView, Image, StyleSheet } from "react-native";
 import { selectMovies } from "../store/movies/selector";
 import { useSelector, useDispatch } from "react-redux";
 import { getMovies } from "../store/movies/action";
+import StartGamePage from "../pages/second-page";
 
 export default function ThirdPage({ route }) {
   // console.log("genressss", route.params.genre);
@@ -13,11 +14,15 @@ export default function ThirdPage({ route }) {
   useEffect(() => {
     dispatch(getMovies());
   }, []);
-  console.log("moviesssss", movies);
-
+  // console.log("moviesssss", movies);
+  // const moviesToCompare = movies.filter((genre_ids) => {
+  //   return genre_ids;
+  // });
+  // console.log("filter", moviesToCompare);
   return (
     <View>
       <Text>Hello Nina!</Text>
+      <StartGamePage />
     </View>
   );
 }

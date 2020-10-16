@@ -1,5 +1,5 @@
 import "react-native-gesture-handler";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import {
   Text,
   View,
@@ -17,11 +17,33 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import ThirdPage from "./pages/third-page";
 import MenuBar from "./components/menu-bar";
+import socketIOClient from "socket.io-client";
 
 const Stack = createStackNavigator();
 const store = createStore(combineReducers, applyMiddleware(thunk));
 
 export default function App() {
+  useEffect(() => {
+    const socket = socketIOClient("ws://192.168.178.11:3000");
+    // console.log("socket", socket);
+    socket.on("swipe", (msg) => {
+      // dispatch();
+      console.log("swipe erceved from socket", msg);
+    });
+    socket.on("connect_failed", function () {
+      console.log("Sorry, there seems to be an issue with the connection!");
+    });
+    socket.on("error", function () {
+      console.log("error");
+    });
+    socket.on("connect", function () {
+      console.log("connect");
+    });
+    socket.on("conecing", function () {
+      console.log("connecting");
+    });
+  }, []);
+
   const randomNum = useRef(Math.random()).current;
 
   const styles = StyleSheet.create({
@@ -35,18 +57,6 @@ export default function App() {
     <Provider store={store}>
       <MenuBar />
       <NavigationContainer>
-        {/* <View style={{ marginHorizontal: 40, marginVertical: 60 }}>
-            <Text
-              style={{ fontWeight: "bold", fontSize: 24, marginBottom: 30 }}
-            >
-              Hello React Native
-            </Text>
-            <Image
-              source={{
-                uri: `https://picsum.photos/500/300?random=${randomNum}`,
-              }}
-              style={{ width: "100%", height: 160, marginBottom: 30 }}
-            /> */}
         <Stack.Navigator initialRouteName="GameStartPage">
           <Stack.Screen
             name="Home"
@@ -55,9 +65,6 @@ export default function App() {
           />
           <Stack.Screen name="ThirdPage" component={ThirdPage} />
         </Stack.Navigator>
-        {/* <GameStartPage /> */}
-        {/* </View> */}
-        {/* </ScrollView> */}
       </NavigationContainer>
     </Provider>
   );

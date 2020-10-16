@@ -23,7 +23,7 @@ export default function GameStartPage({ navigation }) {
   };
   // console.log("gList", genreList);
 
-  console.log("genressss", genres);
+  // console.log("genressss", genres);
   return (
     <View>
       <ScrollView>
@@ -35,7 +35,7 @@ export default function GameStartPage({ navigation }) {
               key={genre.id}
               title={genre.name}
               onPress={() => {
-                set_genreList([...genreList, genre.name]);
+                set_genreList([...genreList, genre.name, genre.id]);
               }}
             />
           );
@@ -43,7 +43,7 @@ export default function GameStartPage({ navigation }) {
 
         <Button
           icon={<Icon name="arrow-right" size={15} color="white" />}
-          title="To start game"
+          title="Go futher"
           onPress={() => navigation.navigate("ThirdPage", { genre: genreList })}
         />
       </ScrollView>
