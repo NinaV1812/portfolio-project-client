@@ -35,14 +35,13 @@ export const getMovies = (genres) => {
   };
 };
 
-export const setUpGame = (code, started) => {
+export const setUpGame = (started) => {
   return async (dispatch, getState) => {
     try {
       const response = await axios.post(`${simpleUrl}/set_up_game`, {
-        code,
-        started,
+        started: started,
       });
-      console.log("response", response);
+      console.log("response", response.data);
 
       dispatch(StartGame(response.data));
     } catch (err) {
@@ -51,16 +50,17 @@ export const setUpGame = (code, started) => {
   };
 };
 
-export const gameMovies = (movie) => {
+export const gameMovies = (movie, gameId) => {
   return async (dispatch, getState) => {
     console.log("called");
     try {
       console.log("string");
       const response = await axios.post(`${simpleUrl}/movies_in_game`, {
         movie: movie,
+        gameId: gameId,
       });
-      // console.log("response", response.data);
-      console.log("movie", movie);
+      console.log("response", response.data);
+      // console.log("movie", movie);
 
       dispatch(MoviesInGame(response.data));
     } catch (err) {

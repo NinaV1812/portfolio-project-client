@@ -1,2 +1,2 @@
-export const selectMovies = (state) => state.movies;
-export const selectGame = (state) => state.game;
+export const selectMovies = (state) => state.movies.movies;
+export const selectGame = (state) => state.movies.game;

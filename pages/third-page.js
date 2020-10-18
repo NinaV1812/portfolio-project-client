@@ -13,19 +13,15 @@ import { getMovies } from "../store/movies/action";
 import StartGamePage from "../pages/second-page";
 import { Card } from "react-native-elements";
 import { gameMovies } from "../store/movies/action";
+import { selectGame } from "../store/movies/selector";
 
 export default function ThirdPage({ route }) {
   const genresToCompare = route.params.genre;
   const movies = useSelector(selectMovies);
   const dispatch = useDispatch();
+  const game = useSelector(selectGame);
 
-  const movieIdsandOverwiev = movies.map((movie) => {
-    return {
-      movieId: movie.id,
-      movieOverview: movie.overview,
-      title: movie.title,
-    };
-  });
+  console.log("gamessssss", game);
 
   function onClickHandler() {
     console.log("click");
@@ -75,7 +71,7 @@ export default function ThirdPage({ route }) {
                 title="I do like"
                 contentContainerStyle={styles.buttonContant}
                 onPress={() => {
-                  dispatch(gameMovies(movie));
+                  dispatch(gameMovies(movie, game.id));
                 }}
               ></Button>
               <Button

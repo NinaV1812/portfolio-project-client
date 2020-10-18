@@ -23,7 +23,7 @@ export default function StartGamePage({ navigation, route }) {
   };
 
   const toDoDispatch = () => {
-    dispatch(setUpGame(code, started));
+    dispatch(setUpGame(started));
   };
 
   const functionCombined = () => {
