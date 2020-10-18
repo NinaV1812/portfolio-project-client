@@ -24,6 +24,7 @@ export default function GameStartPage({ navigation }) {
   // console.log("gList", genreList);
 
   // console.log("genressss", genres);
+
   return (
     <View>
       <ScrollView>
@@ -35,7 +36,7 @@ export default function GameStartPage({ navigation }) {
               key={genre.id}
               title={genre.name}
               onPress={() => {
-                set_genreList([...genreList, genre.name, genre.id]);
+                set_genreList([...genreList, genre.id]);
               }}
             />
           );

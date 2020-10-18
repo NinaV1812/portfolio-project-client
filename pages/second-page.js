@@ -18,19 +18,26 @@ export default function StartGamePage({ navigation, route }) {
   const started = true;
   const dispatch = useDispatch();
 
+  const navigator = () => {
+    navigation.navigate("ThirdPage", { genre: genresToCompare });
+  };
+
+  const toDoDispatch = () => {
+    dispatch(setUpGame(code, started));
+  };
+
+  const functionCombined = () => {
+    toDoDispatch();
+    navigator();
+  };
+
   return (
     <View>
       <ScrollView>
         <Text>Hello Nina!</Text>
         <Text>Users:</Text>
         <Text>Your code to join:{code}</Text>
-        <Button
-          title="To start game"
-          //   onPress={() => dispatch(setUpGame(code, started))
-          onPress={() =>
-            navigation.navigate("ThirdPage", { genre: genresToCompare })
-          }
-        />
+        <Button title="To start game" onPress={() => functionCombined()} />
       </ScrollView>
     </View>
   );

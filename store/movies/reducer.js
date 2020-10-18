@@ -8,6 +8,7 @@ export default function (state = initialState, action) {
       return action.payload;
     }
     case START_GAME:
+      console.log("game start in reducer", action.payload);
       return [...state, action.payload];
 
     default:
