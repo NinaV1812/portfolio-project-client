@@ -14,6 +14,7 @@ import { setUpGame } from "../store/movies/action";
 import { selectGame } from "../store/movies/selector";
 import Input from "../pages/screen-with-input-field";
 import { gameCode } from "../store/games/action";
+import { selectMoviesGames } from "../store/games/selector";
 
 export default function StartGamePage({ navigation, route }) {
   //   console.log("genressss", route.params.genre);
@@ -23,8 +24,10 @@ export default function StartGamePage({ navigation, route }) {
   const dispatch = useDispatch();
   const game = useSelector(selectGame);
   const [value, onChangeText] = React.useState("Placeholder");
+  const movieGame = useSelector(selectMoviesGames);
 
-  console.log("gamessssss", game);
+  // console.log("gamessssss", game);
+  console.log("movieGame", movieGame);
 
   // console.log("code to join", codeToJoin);
 
