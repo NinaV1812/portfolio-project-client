@@ -17,7 +17,7 @@ export default function GameStartPage(prop) {
     set_checked(!checked);
   };
 
-  console.log("checked", checked);
+  // console.log("checked", checked);
 
   return (
     <View>

@@ -1,50 +1,61 @@
 import React, { useEffect, useState } from "react";
-import { Button, Text, View, ScrollView } from "react-native";
+import { Button, Text, View, ScrollView, TextInput } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { getGenres } from "../store/genres/action";
 
 import { useSelector, useDispatch } from "react-redux";
 import { selectGenres } from "../store/genres/selector";
-import MyBox from "./check-box-group";
+// import MyBox from "./check-box-group";
+import { setUpGame } from "../store/movies/action";
 
 export default function GameStartPage({ navigation }) {
-  const genres = useSelector(selectGenres);
+  // const genres = useSelector(selectGenres);
   const dispatch = useDispatch();
-  const [genreList, set_genreList] = useState([]);
+  // const [genreList, set_genreList] = useState([]);
+  const started = true; /// also, ask if it is okay to that, so all my games are started in DB.
+  const [name, onChangeText] = useState("My name");
 
-  useEffect(() => {
-    dispatch(getGenres());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getGenres());
+  // }, []);
 
-  const click = (choice) => {
-    // console.log();
-    // const accountBlockedNot = user.accountBlocked === true ? false : true;
-    // dispatch(updateUser(user.id, accountBlockedNot));
+  // // console.log("gList", genreList);
+
+  // // console.log("genressss", genres);
+
+  console.log("name", name);
+
+  const navigator = () => {
+    navigation.navigate("genres-page");
   };
-  // console.log("gList", genreList);
 
-  console.log("genressss", genres);
+  const toDoDispatch = () => {
+    dispatch(setUpGame(started, name));
+  };
+
+  const functionCombined = () => {
+    toDoDispatch();
+    navigator();
+  };
+
   return (
     <View>
       <ScrollView>
-        <Text>Choose you genre</Text>
+        <Text>If you want to start a new game.</Text>
+        <TextInput
+          style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
+          onChangeText={(name) => onChangeText(name)}
+          value={name}
+        />
 
-        {genres.map((genre) => {
-          return (
-            <MyBox
-              key={genre.id}
-              title={genre.name}
-              onPress={() => {
-                set_genreList([...genreList, genre.name]);
-              }}
-            />
-          );
-        })}
+        <Button title="Start game" onPress={() => functionCombined()} />
+
+        <Text>Push if you want to join a game.</Text>
 
         <Button
           icon={<Icon name="arrow-right" size={15} color="white" />}
-          title="To start game"
-          onPress={() => navigation.navigate("ThirdPage", { genre: genreList })}
+          title="Join a game "
+          onPress={() => navigation.navigate("StartGamePage")}
         />
       </ScrollView>
     </View>

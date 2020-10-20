@@ -21,20 +21,6 @@ export const getGenres = () => {
   };
 };
 
-export const setUpGame = () => {
-  return async (dispatch, getState) => {
-    try {
-      const response = await axios.post(`${apiUrl}/set_up_game`, {
-        code,
-        started,
-      });
-      // console.log("Yep!", response);
-    } catch (err) {
-      err.response;
-    }
-  };
-};
-
 export const joinTheGame = () => {
   return async (dispatch, getState) => {
     try {
