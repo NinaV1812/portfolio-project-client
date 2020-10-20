@@ -35,11 +35,12 @@ export const getMovies = (genres) => {
   };
 };
 
-export const setUpGame = (started) => {
+export const setUpGame = (started, name) => {
   return async (dispatch, getState) => {
     try {
       const response = await axios.post(`${simpleUrl}/set_up_game`, {
         started: started,
+        name: name,
       });
       console.log("response", response.data);
 

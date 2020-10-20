@@ -15,10 +15,11 @@ import combineReducers from "./store/rootReducer";
 import thunk from "redux-thunk";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import ThirdPage from "./pages/third-page";
+import DisplayMovies from "./pages/display-movies";
 import MenuBar from "./components/menu-bar";
 import socketIOClient from "socket.io-client";
-import StartGamePage from "./pages/second-page";
+import StartGamePage from "./pages/start-game-page";
+import GenresPage from "./pages/genres-page";
 
 const Stack = createStackNavigator();
 const store = createStore(combineReducers, applyMiddleware(thunk));
@@ -65,7 +66,8 @@ export default function App() {
             options={{ title: "Welcome" }}
           />
           <Stack.Screen name="StartGamePage" component={StartGamePage} />
-          <Stack.Screen name="ThirdPage" component={ThirdPage} />
+          <Stack.Screen name="genres-page" component={GenresPage} />
+          <Stack.Screen name="display-movies" component={DisplayMovies} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
