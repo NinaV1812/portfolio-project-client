@@ -27,7 +27,7 @@ export const getMovies = (genres) => {
         `${moviesApi}&with_genres=${genres.join(",")}`
       );
       const movies = response.data.results;
-      console.log("Yep!");
+      // console.log("Yep!");
       dispatch(FetchMovies(movies));
     } catch (err) {
       err.response;
@@ -38,11 +38,12 @@ export const getMovies = (genres) => {
 export const setUpGame = (started, name) => {
   return async (dispatch, getState) => {
     try {
+      // console.log("get state", getState());
       const response = await axios.post(`${simpleUrl}/set_up_game`, {
         started: started,
         name: name,
       });
-      console.log("response", response.data);
+      // console.log("response", response.data);
 
       dispatch(StartGame(response.data));
     } catch (err) {

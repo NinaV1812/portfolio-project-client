@@ -13,7 +13,7 @@ export default function GameStartPage({ navigation }) {
   const dispatch = useDispatch();
   // const [genreList, set_genreList] = useState([]);
   const started = true; /// also, ask if it is okay to that, so all my games are started in DB.
-  const [name, onChangeText] = useState("My name");
+  const [name, onChangeText] = React.useState("My name");
 
   // useEffect(() => {
   //   dispatch(getGenres());

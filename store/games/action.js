@@ -22,10 +22,10 @@ export const gameCode = (code, name) => {
         code: code,
         name: name,
       });
-      console.log("mmm");
+      // console.log("mmm");
 
       const gameDetails = response.data;
-      console.log("Yep!", response.data);
+      // console.log("Yep!", response.data);
       dispatch(GetGameCode(gameDetails));
     } catch (err) {
       err.response;
@@ -35,11 +35,11 @@ export const gameCode = (code, name) => {
 
 export const updateGenres = (gameId, genres) => {
   return async (dispatch, getState) => {
-    console.log("getState", getState());
+    // console.log("getState", getState());
     const response = await axios.patch(`${simpleUrl}/game/${gameId}`, {
-      genres,
+      genres: genres,
     });
-    console.log("AAAAAA", response.data);
+    // console.log("AAAAAA", response.data);
     dispatch(GenresUpdated(response.data));
   };
 };

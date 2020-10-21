@@ -17,13 +17,13 @@ export default function GenresPage({ navigation }) {
   const started = true; /// also, ask if it is okay to that, so all my games are started in DB.
   const game = useSelector(selectGame);
 
-  console.log("gamessssss", game);
+  // console.log("gamessssss", game);
 
   useEffect(() => {
     dispatch(getGenres());
   }, []);
 
-  console.log("gList", genreList);
+  // console.log("gList", genreList);
 
   // console.log("genressss", genres);
   if (game) {

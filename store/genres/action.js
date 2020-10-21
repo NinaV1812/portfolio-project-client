@@ -10,6 +10,7 @@ export const fetchGenres = (genres) => ({
 
 export const getGenres = () => {
   return async (dispatch, getState) => {
+    // console.log("get state", getState);
     try {
       const response = await axios.get(`${apiUrl}/genres`);
       //    console.log("response", response.data.genres)
