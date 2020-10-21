@@ -7,35 +7,27 @@ import {
   StyleSheet,
   Button,
 } from "react-native";
-import { selectMovies } from "../store/movies/selector";
+// import { selectMovies } from "../store/movies/selector";
 import { useSelector, useDispatch } from "react-redux";
-import { getMovies } from "../store/movies/action";
+// import { getMovies } from "../store/movies/action";
 import { Card } from "react-native-elements";
 import { gameMovies } from "../store/movies/action";
 import { selectGame } from "../store/movies/selector";
 import { selectMoviesGames } from "../store/movies/selector";
 
 export default function ThirdPage({ route }) {
-  const genresToCompare = route.params.genre;
+  // const genresToCompare = route.params.genre;
   // const movies = useSelector(selectMovies);
   const dispatch = useDispatch();
   const game = useSelector(selectGame);
   const movies = useSelector(selectMoviesGames);
   const [movieIdToShow, setMovieIdToShow] = useState(0);
 
-  console.log("gamessssss", game);
+  // console.log("gamessssss", game);
 
   // console.log("game movies", movies);
 
-  useEffect(() => {
-    // dispatch(getMovies(genresToCompare));
-  }, []);
-  // useEffect(() => {
-  //   dispatch(fetchMovieById(movieIdToShow));
-  // }, [movieIdToShow]); //because when this changes we want to fetch the next movie
-
   // console.log("Genres that has been chosen: ", genresToCompare);
-  // console.log("Movies of our genres; ", movies);
   const styles = StyleSheet.create({
     contentContainer: {
       paddingVertical: 20,
@@ -62,9 +54,9 @@ export default function ThirdPage({ route }) {
     changeFilm();
   }
 
-  console.log("game movies", movies);
+  // console.log("game movies", movies);
   const movie = movies[movieIdToShow];
-  console.log("movie", movie);
+  // console.log("movie", movie);
 
   if (movie) {
     return (
@@ -105,13 +97,11 @@ export default function ThirdPage({ route }) {
               title="I don't like"
               contentContainerStyle={styles.buttonContant}
               onPress={() => {
-                setMovieIdToShow(MovieIdToShow + 1);
+                setMovieIdToShow(movieIdToShow + 1);
               }}
             ></Button>
-            <Button title="To call a function"></Button>
           </Card>
         </ScrollView>
-        <Text>Hello</Text>
       </View>
     );
   }

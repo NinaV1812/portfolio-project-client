@@ -15,6 +15,11 @@ export const GenresUpdated = (updatedGame) => ({
   payload: updatedGame,
 });
 
+export const UserChoice = (choice) => ({
+  type: MADE_CHOICE,
+  payload: choice,
+});
+
 export const gameCode = (code, name) => {
   return async (dispatch, getState) => {
     try {
@@ -30,6 +35,17 @@ export const gameCode = (code, name) => {
     } catch (err) {
       err.response;
     }
+  };
+};
+
+export const madeChoise = (gameMovieId) => {
+  return async (dispatch, getState) => {
+    // console.log("getState", getState());
+    const response = await axios.post(`${simpleUrl}/game/choice`, {
+      gameMovieId: gameMovieId,
+    });
+    console.log("AAAAAA", response.data);
+    dispatch(UserChoice(response.data));
   };
 };
 
