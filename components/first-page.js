@@ -1,32 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Button, Text, View, ScrollView, TextInput } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { getGenres } from "../store/genres/action";
-
-import { useSelector, useDispatch } from "react-redux";
-import { selectGenres } from "../store/genres/selector";
-// import MyBox from "./check-box-group";
+import { useDispatch } from "react-redux";
 import { setUpGame } from "../store/movies/action";
 
 export default function GameStartPage({ navigation }) {
-  // const genres = useSelector(selectGenres);
   const dispatch = useDispatch();
-  // const [genreList, set_genreList] = useState([]);
   const started = true; /// also, ask if it is okay to that, so all my games are started in DB.
   const [name, onChangeText] = React.useState("My name");
 
-  // useEffect(() => {
-  //   dispatch(getGenres());
-  // }, []);
-
-  // // console.log("gList", genreList);
-
-  // // console.log("genressss", genres);
-
   console.log("name", name);
-
   const navigator = () => {
-    navigation.navigate("genres-page");
+    navigation.navigate("Your game code");
   };
 
   const toDoDispatch = () => {

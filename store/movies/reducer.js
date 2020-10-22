@@ -1,5 +1,5 @@
 import { FETCH_MOVIES, START_GAME } from "./action";
-import { UPDATED_GAME } from "../games/action";
+import { UPDATED_GAME, GET_GAME } from "../games/action";
 const initialState = {
   game: null,
   gameMovies: [],
@@ -23,9 +23,15 @@ export default function (state = initialState, action) {
         gameMovies: action.payload,
       };
     }
-    // case UPDATED_GAME: {
-    //   return { ...state, gameMovies: action.payload };
-    // }
+    case GET_GAME:
+      {
+        return {
+          ...state,
+          game: action.payload,
+          gameMovies: action.payload.gameMovies,
+        };
+      }
+      ``;
 
     default:
       return state;

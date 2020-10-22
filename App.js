@@ -20,6 +20,8 @@ import MenuBar from "./components/menu-bar";
 import socketIOClient from "socket.io-client";
 import StartGamePage from "./pages/start-game-page";
 import GenresPage from "./pages/genres-page";
+import CommonMoviesPage from "./pages/common-movies";
+import GameCodeDisplay from "./pages/code-page";
 
 const Stack = createStackNavigator();
 const store = createStore(combineReducers, applyMiddleware(thunk));
@@ -65,9 +67,11 @@ export default function App() {
             component={GameStartPage}
             options={{ title: "Welcome" }}
           />
+          <Stack.Screen name="Your game code" component={GameCodeDisplay} />
           <Stack.Screen name="StartGamePage" component={StartGamePage} />
           <Stack.Screen name="genres-page" component={GenresPage} />
           <Stack.Screen name="display-movies" component={DisplayMovies} />
+          <Stack.Screen name="common-movies" component={CommonMoviesPage} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

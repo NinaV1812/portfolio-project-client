@@ -4,6 +4,7 @@ import { simpleUrl } from "../../config/constant";
 
 export const GAME_CODE = "GAME_CODE";
 export const UPDATED_GAME = "UPDATED_GAME";
+export const GET_GAME = "GET_GAME";
 
 export const GetGameCode = (codeOfTheGame) => ({
   type: GAME_CODE,
@@ -18,6 +19,11 @@ export const GenresUpdated = (updatedGame) => ({
 export const UserChoice = (choice) => ({
   type: MADE_CHOICE,
   payload: choice,
+});
+
+export const GetGame = (gameInfo) => ({
+  type: GET_GAME,
+  payload: gameInfo,
 });
 
 export const gameCode = (code, name) => {
@@ -38,13 +44,28 @@ export const gameCode = (code, name) => {
   };
 };
 
+export const getGame = (code) => {
+  return async (dispatch, getState) => {
+    try {
+      const response = await axios.get(`${simpleUrl}/game/${code}`);
+      // console.log("mmm");
+
+      const gameDetails = response.data;
+      console.log("Yep!", response.data);
+      dispatch(GetGame(gameDetails));
+    } catch (err) {
+      err.response;
+    }
+  };
+};
+
 export const madeChoise = (gameMovieId) => {
   return async (dispatch, getState) => {
     // console.log("getState", getState());
     const response = await axios.post(`${simpleUrl}/game/choice`, {
       gameMovieId: gameMovieId,
     });
-    console.log("AAAAAA", response.data);
+    // console.log("AAAAAA", response.data);
     dispatch(UserChoice(response.data));
   };
 };
@@ -55,7 +76,7 @@ export const updateGenres = (gameId, genres) => {
     const response = await axios.patch(`${simpleUrl}/game/${gameId}`, {
       genres: genres,
     });
-    // console.log("AAAAAA", response.data);
+    console.log("AAAAAA", response.data);
     dispatch(GenresUpdated(response.data));
   };
 };

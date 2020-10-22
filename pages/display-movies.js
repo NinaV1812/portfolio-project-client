@@ -7,17 +7,15 @@ import {
   StyleSheet,
   Button,
 } from "react-native";
-// import { selectMovies } from "../store/movies/selector";
 import { useSelector, useDispatch } from "react-redux";
-// import { getMovies } from "../store/movies/action";
 import { Card } from "react-native-elements";
 import { gameMovies } from "../store/movies/action";
 import { selectGame } from "../store/movies/selector";
 import { selectMoviesGames } from "../store/movies/selector";
+import { getGame } from "../store/games/action";
 
-export default function ThirdPage({ route }) {
-  // const genresToCompare = route.params.genre;
-  // const movies = useSelector(selectMovies);
+export default function ThirdPage({ navigation, route }) {
+  const gameCode = route.params.code;
   const dispatch = useDispatch();
   const game = useSelector(selectGame);
   const movies = useSelector(selectMoviesGames);
@@ -25,9 +23,12 @@ export default function ThirdPage({ route }) {
 
   // console.log("gamessssss", game);
 
-  // console.log("game movies", movies);
+  console.log("game movies", movies);
 
-  // console.log("Genres that has been chosen: ", genresToCompare);
+  useEffect(() => {
+    dispatch(getGame(gameCode));
+  }, []);
+
   const styles = StyleSheet.create({
     contentContainer: {
       paddingVertical: 20,
@@ -71,7 +72,7 @@ export default function ThirdPage({ route }) {
             </Text>
             <Text style={{ fontWeight: "bold" }}>Description:</Text>
             <Text>
-              {" "}
+              {"\n"}
               {movie.overview}
               {"\n"}
             </Text>
@@ -101,6 +102,12 @@ export default function ThirdPage({ route }) {
               }}
             ></Button>
           </Card>
+          <Button
+            title="navigation  button"
+            onPress={() => {
+              navigation.navigate("common-movies");
+            }}
+          ></Button>
         </ScrollView>
       </View>
     );
