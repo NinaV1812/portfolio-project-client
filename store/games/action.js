@@ -61,22 +61,18 @@ export const getGame = (code) => {
 
 export const madeChoise = (gameMovieId) => {
   return async (dispatch, getState) => {
-    // console.log("getState", getState());
     const response = await axios.post(`${simpleUrl}/game/choice`, {
       gameMovieId: gameMovieId,
     });
-    // console.log("AAAAAA", response.data);
     dispatch(UserChoice(response.data));
   };
 };
 
 export const updateGenres = (gameId, genres) => {
   return async (dispatch, getState) => {
-    // console.log("getState", getState());
     const response = await axios.patch(`${simpleUrl}/game/${gameId}`, {
       genres: genres,
     });
-    // console.log("AAAAAA", response.data);
     dispatch(GenresUpdated(response.data));
   };
 };

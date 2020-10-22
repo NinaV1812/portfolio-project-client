@@ -6,6 +6,7 @@ import { selectGenres } from "../store/genres/selector";
 import MyBox from "../components/check-box-group";
 import { updateGenres } from "../store/games/action";
 import { selectGame } from "../store/movies/selector";
+import { styles } from "../styles";
 
 export default function GenresPage({ navigation }) {
   const genres = useSelector(selectGenres);
@@ -36,9 +37,14 @@ export default function GenresPage({ navigation }) {
     };
 
     return (
-      <View>
-        <ScrollView>
-          <Text>Choose you genre</Text>
+      <ScrollView style={styles.scrollView}>
+        <View
+          style={{
+            marginBottom: 20,
+            marginBottom: 20,
+          }}
+        >
+          <Text style={styles.text}>Choose you genre</Text>
 
           {genres.map((genre) => {
             return (
@@ -51,9 +57,13 @@ export default function GenresPage({ navigation }) {
               />
             );
           })}
-          <Button title="Start choosing" onPress={() => functionCombined()} />
-        </ScrollView>
-      </View>
+          <Button
+            style={styles.buttonContainer}
+            title="Start choosing"
+            onPress={() => functionCombined()}
+          />
+        </View>
+      </ScrollView>
     );
   }
   return <Text>Loading</Text>;

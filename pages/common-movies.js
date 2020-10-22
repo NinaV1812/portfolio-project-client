@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectGame, SelectCommonMovies } from "../store/movies/selector";
 import { getCommonMovies } from "../store/movies/action";
 import { Card } from "react-native-elements";
+import { styles } from "../styles";
 
 export default function CommonMoviesPage() {
   // const genres = route.params.genre;
@@ -21,9 +22,9 @@ export default function CommonMoviesPage() {
   }, []);
   if (commonMovies) {
     return (
-      <View>
-        <ScrollView>
-          <Text>Hey-hey. Movies that you all liked</Text>
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.container}>
+          <Text style={styles.text}>Hey-hey. Movies that you all liked</Text>
           {commonMovies.map((movie) => {
             return (
               <Card key={movie.id}>
@@ -50,9 +51,15 @@ export default function CommonMoviesPage() {
               </Card>
             );
           })}
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
     );
   }
-  return <Text>Not yet</Text>;
+  return (
+    <ScrollView style={styles.scrollView}>
+      <View style={styles.container}>
+        <Text style={styles.text}>Not yet</Text>
+      </View>
+    </ScrollView>
+  );
 }

@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from "react";
-import {
-  Text,
-  View,
-  ScrollView,
-  Image,
-  StyleSheet,
-  Button,
-} from "react-native";
+import { Text, View, ScrollView, Button } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { Card } from "react-native-elements";
 import { gameMovies } from "../store/movies/action";
 import { selectGame } from "../store/movies/selector";
 import { selectMoviesGames } from "../store/movies/selector";
 import { getGame } from "../store/games/action";
+import { styles } from "../styles";
 
 export default function ThirdPage({ navigation, route }) {
   const gameCode = route.params.code;
@@ -29,18 +23,6 @@ export default function ThirdPage({ navigation, route }) {
     dispatch(getGame(gameCode));
   }, []);
 
-  const styles = StyleSheet.create({
-    contentContainer: {
-      paddingVertical: 20,
-    },
-    buttonContant: {
-      margin: 20,
-      padding: 20,
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "space-between",
-    },
-  });
   useEffect(() => {}, []);
   function toDispatch() {
     const movie = movies[movieIdToShow];
@@ -55,14 +37,12 @@ export default function ThirdPage({ navigation, route }) {
     changeFilm();
   }
 
-  // console.log("game movies", movies);
   const movie = movies[movieIdToShow];
-  // console.log("movie", movie);
 
   if (movie) {
     return (
-      <View>
-        <ScrollView contentContainerStyle={styles.contentContainer}>
+      <ScrollView contentContainerStyle={styles.scrollView}>
+        <View style={styles.container}>
           <Card key={movie.id}>
             <Text style={{ fontWeight: "bold" }}>Title: </Text>
 
@@ -88,6 +68,7 @@ export default function ThirdPage({ navigation, route }) {
               {movie.vote_average} {"\n"}
             </Text>
             <Button
+              style={styles.buttonContainer}
               title="I do like"
               contentContainerStyle={styles.buttonContant}
               onPress={() => {
@@ -95,6 +76,7 @@ export default function ThirdPage({ navigation, route }) {
               }}
             ></Button>
             <Button
+              style={styles.buttonContainer}
               title="I don't like"
               contentContainerStyle={styles.buttonContant}
               onPress={() => {
@@ -103,13 +85,14 @@ export default function ThirdPage({ navigation, route }) {
             ></Button>
           </Card>
           <Button
-            title="navigation  button"
+            style={styles.buttonContainer}
+            title="I'm done"
             onPress={() => {
               navigation.navigate("common-movies");
             }}
           ></Button>
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
     );
   }
   {

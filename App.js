@@ -9,7 +9,6 @@ import thunk from "redux-thunk";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import DisplayMovies from "./pages/display-movies";
-import MenuBar from "./components/menu-bar";
 import socketIOClient from "socket.io-client";
 import StartGamePage from "./pages/start-game-page";
 import GenresPage from "./pages/genres-page";
@@ -40,16 +39,8 @@ export default function App() {
     });
   }, []);
 
-  const styles = StyleSheet.create({
-    scrollView: {
-      backgroundColor: "pink",
-      marginHorizontal: 20,
-    },
-  });
-
   return (
     <Provider store={store}>
-      <MenuBar />
       <NavigationContainer>
         <Stack.Navigator initialRouteName="GameStartPage">
           <Stack.Screen
