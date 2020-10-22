@@ -1,9 +1,10 @@
-import { FETCH_MOVIES, START_GAME } from "./action";
+import { FETCH_MOVIES, START_GAME, COMMON_MOVIES } from "./action";
 import { UPDATED_GAME, GET_GAME } from "../games/action";
 const initialState = {
   game: null,
   gameMovies: [],
   indexOfMovieToDisplay: 0,
+  commonMovies: [],
 };
 
 export default function (state = initialState, action) {
@@ -23,15 +24,19 @@ export default function (state = initialState, action) {
         gameMovies: action.payload,
       };
     }
-    case GET_GAME:
-      {
-        return {
-          ...state,
-          game: action.payload,
-          gameMovies: action.payload.gameMovies,
-        };
-      }
-      ``;
+    case GET_GAME: {
+      return {
+        ...state,
+        game: action.payload,
+        gameMovies: action.payload.gameMovies,
+      };
+    }
+    case COMMON_MOVIES: {
+      return {
+        ...state,
+        commonMovies: action.payload.gameMovies,
+      };
+    }
 
     default:
       return state;

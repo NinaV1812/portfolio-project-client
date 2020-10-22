@@ -4,6 +4,7 @@ import { moviesApi, simpleUrl } from "../../config/constant";
 export const FETCH_MOVIES = "FETCH_MOVIES";
 export const START_GAME = "START_GAME";
 export const MOVIES_INGAME = "MOVIES_INGAME";
+export const COMMON_MOVIES = "COMMON_MOVIES";
 
 export const FetchMovies = (movies) => ({
   type: FETCH_MOVIES,
@@ -18,6 +19,11 @@ export const StartGame = (game) => ({
 export const MoviesInGame = (moviesInGame) => ({
   type: MOVIES_INGAME,
   payload: moviesInGame,
+});
+
+export const GetCommonMovies = (movies) => ({
+  type: COMMON_MOVIES,
+  payload: movies,
 });
 
 export const getMovies = (genres) => {
@@ -35,10 +41,25 @@ export const getMovies = (genres) => {
   };
 };
 
+export const getCommonMovies = (gameId) => {
+  console.log("this one");
+  return async (dispatch, getState) => {
+    console.log("called");
+    try {
+      const response = await axios.get(`${simpleUrl}/game_movie/${gameId}`);
+      const movies = response.data;
+      console.log("Yep! here they are", movies);
+      dispatch(GetCommonMovies(movies));
+    } catch (err) {
+      err.response;
+    }
+  };
+};
+
 export const setUpGame = (started, name) => {
   return async (dispatch, getState) => {
     try {
-      // console.log("get state", getState());
+      console.log("get state", getState());
       const response = await axios.post(`${simpleUrl}/set_up_game`, {
         started: started,
         name: name,
@@ -54,9 +75,9 @@ export const setUpGame = (started, name) => {
 
 export const gameMovies = (movie, gameId) => {
   return async (dispatch, getState) => {
-    console.log("called");
+    // console.log("called");
     try {
-      console.log("string");
+      // console.log("string");
       const response = await axios.post(`${simpleUrl}/movies_in_game`, {
         movie: movie,
         gameId: gameId,

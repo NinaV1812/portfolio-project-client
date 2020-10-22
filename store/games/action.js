@@ -76,7 +76,7 @@ export const updateGenres = (gameId, genres) => {
     const response = await axios.patch(`${simpleUrl}/game/${gameId}`, {
       genres: genres,
     });
-    console.log("AAAAAA", response.data);
+    // console.log("AAAAAA", response.data);
     dispatch(GenresUpdated(response.data));
   };
 };

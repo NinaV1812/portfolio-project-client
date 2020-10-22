@@ -21,9 +21,9 @@ export default function ThirdPage({ navigation, route }) {
   const movies = useSelector(selectMoviesGames);
   const [movieIdToShow, setMovieIdToShow] = useState(0);
 
-  // console.log("gamessssss", game);
+  // console.log("gamesssssss", game);
 
-  console.log("game movies", movies);
+  // console.log("game movies", movies);
 
   useEffect(() => {
     dispatch(getGame(gameCode));

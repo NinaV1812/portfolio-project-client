@@ -1,13 +1,6 @@
 import "react-native-gesture-handler";
 import React, { useEffect, useRef } from "react";
-import {
-  Text,
-  View,
-  ScrollView,
-  Image,
-  StyleSheet,
-  Button,
-} from "react-native";
+import { StyleSheet } from "react-native";
 import GameStartPage from "./components/first-page";
 import { Provider } from "react-redux";
 import { applyMiddleware, createStore } from "redux";
@@ -29,7 +22,6 @@ const store = createStore(combineReducers, applyMiddleware(thunk));
 export default function App() {
   useEffect(() => {
     const socket = socketIOClient("ws://192.168.178.11:3000");
-    // console.log("socket", socket);
     socket.on("swipe", (msg) => {
       dispatch();
       console.log("swipe erceved from socket", msg);
@@ -47,8 +39,6 @@ export default function App() {
       console.log("connecting");
     });
   }, []);
-
-  const randomNum = useRef(Math.random()).current;
 
   const styles = StyleSheet.create({
     scrollView: {
