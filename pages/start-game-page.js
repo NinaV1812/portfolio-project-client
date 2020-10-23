@@ -15,20 +15,15 @@ import { gameCode } from "../store/games/action";
 import { styles } from "../styles";
 
 export default function StartGamePage({ navigation, route }) {
-  //   console.log("genressss", route.params.genre);
   const dispatch = useDispatch();
   const game = useSelector(selectGame);
   const [name, onChangeText] = React.useState("");
   const [codeToJoin, set_codeToJoin] = React.useState("");
 
-  // console.log("gamessssss", game);
-  // console.log("movieGame", movieGame);
   console.log("name", name);
   console.log("codeToJoin", codeToJoin);
 
-  // console.log("code to join", codeToJoin);
   function functionDispatch() {
-    // const codeToJoin = game.code;
     dispatch(gameCode(codeToJoin, name));
   }
   function functionNavigator() {

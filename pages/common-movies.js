@@ -7,7 +7,6 @@ import { Card } from "react-native-elements";
 import { styles } from "../styles";
 
 export default function CommonMoviesPage() {
-  // const genres = route.params.genre;
   const dispatch = useDispatch();
   const game = useSelector(selectGame);
   // console.log("games on this page", game);
