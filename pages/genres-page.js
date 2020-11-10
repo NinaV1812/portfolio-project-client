@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Text, View, ScrollView } from "react-native";
+import { Button, Text, View, ScrollView, TouchableOpacity } from "react-native";
 import { getGenres } from "../store/genres/action";
 import { useSelector, useDispatch } from "react-redux";
 import { selectGenres } from "../store/genres/selector";
@@ -24,7 +24,7 @@ export default function GenresPage({ navigation }) {
     const gameID = game.id;
 
     const navigator = () => {
-      navigation.navigate("display-movies", { genre: genreList });
+      navigation.navigate("Movies to Like", { genre: genreList });
     };
 
     const toDoDispatch = () => {
@@ -38,33 +38,36 @@ export default function GenresPage({ navigation }) {
 
     return (
       <ScrollView style={styles.scrollView}>
-        <View
-          style={{
-            marginBottom: 20,
-            marginBottom: 20,
-          }}
-        >
+        <View style={styles.genres_container}>
           <Text style={styles.text}>Choose you genre</Text>
-
-          {genres.map((genre) => {
-            return (
-              <MyBox
-                key={genre.id}
-                title={genre.name}
-                onPress={() => {
-                  set_genreList([...genreList, genre.id]);
-                }}
-              />
-            );
-          })}
-          <Button
+          <View style={styles.genres_list}>
+            {genres.map((genre) => {
+              return (
+                <MyBox
+                  key={genre.id}
+                  title={genre.name}
+                  onPress={() => {
+                    set_genreList([...genreList, genre.id]);
+                  }}
+                />
+              );
+            })}
+          </View>
+          <TouchableOpacity
             style={styles.buttonContainer}
-            title="Start choosing"
             onPress={() => functionCombined()}
-          />
+          >
+            <Text style={styles.appButtonText}>Start</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     );
   }
-  return <Text>Loading</Text>;
+  return (
+    <ScrollView style={styles.scrollView}>
+      <View style={styles.container}>
+        <Text style={styles.text}> Loading</Text>
+      </View>
+    </ScrollView>
+  );
 }

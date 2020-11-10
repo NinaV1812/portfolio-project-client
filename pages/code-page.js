@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import { Text, View, ScrollView, Button, TextInput } from "react-native";
+import { Text, View, ScrollView, Button, TouchableOpacity } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { selectGame } from "../store/movies/selector";
 import { styles } from "../styles";
 
 export default function GameCodeDisplay({ navigation }) {
   const game = useSelector(selectGame);
-  console.log("game on code page", game);
+  // console.log("game on code page", game);
 
   if (game) {
     const codeToJoin = game.code;
@@ -16,12 +16,13 @@ export default function GameCodeDisplay({ navigation }) {
           <Text style={styles.text}>
             People can join you by using this code:
           </Text>
-          <Text style={styles.text}>{codeToJoin}</Text>
-          <Button
+          <Text style={styles.code}>{codeToJoin}</Text>
+          <TouchableOpacity
             style={styles.buttonContainer}
-            title="Continue"
-            onPress={() => navigation.navigate("genres-page")}
-          />
+            onPress={() => navigation.navigate("Genres Page")}
+          >
+            <Text style={styles.appButtonText}>Continue</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     );
