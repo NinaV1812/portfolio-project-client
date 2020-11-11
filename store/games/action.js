@@ -33,10 +33,8 @@ export const gameCode = (code, name) => {
         code: code,
         name: name,
       });
-      // console.log("mmm");
 
       const gameDetails = response.data;
-      // console.log("Yep!", response.data);
       dispatch(GetGameCode(gameDetails));
     } catch (err) {
       err.response;
@@ -48,10 +46,8 @@ export const getGame = (code) => {
   return async (dispatch, getState) => {
     try {
       const response = await axios.get(`${simpleUrl}/game/${code}`);
-      // console.log("mmm");
 
       const gameDetails = response.data;
-      // console.log("Yep!", response.data);
       dispatch(GetGame(gameDetails));
     } catch (err) {
       err.response;

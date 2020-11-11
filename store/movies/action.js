@@ -33,7 +33,6 @@ export const getMovies = (genres) => {
         `${moviesApi}&with_genres=${genres.join(",")}`
       );
       const movies = response.data.results;
-      // console.log("Yep!");
       dispatch(FetchMovies(movies));
     } catch (err) {
       err.response;
@@ -42,13 +41,10 @@ export const getMovies = (genres) => {
 };
 
 export const getCommonMovies = (gameId) => {
-  console.log("this one");
   return async (dispatch, getState) => {
-    console.log("called");
     try {
       const response = await axios.get(`${simpleUrl}/game_movie/${gameId}`);
       const movies = response.data;
-      // console.log("Yep! here they are", movies);
       dispatch(commonChosenMovies(movies));
     } catch (err) {
       err.response;
@@ -59,12 +55,10 @@ export const getCommonMovies = (gameId) => {
 export const setUpGame = (started, name) => {
   return async (dispatch, getState) => {
     try {
-      console.log("get state", getState());
       const response = await axios.post(`${simpleUrl}/set_up_game`, {
         started: started,
         name: name,
       });
-      // console.log("response", response.data);
 
       dispatch(StartGame(response.data));
     } catch (err) {
@@ -75,17 +69,12 @@ export const setUpGame = (started, name) => {
 
 export const gameMovies = (movieId, gameId, picked) => {
   return async (dispatch, getState) => {
-    // console.log("called");
     try {
-      // console.log("string");
       const response = await axios.post(`${simpleUrl}/movies_in_game`, {
         movieId: movieId,
         gameId: gameId,
         picked: picked,
       });
-      console.log("response", response.data);
-      // console.log("movie", movie);
-
       dispatch(MoviesInGame(response.data));
     } catch (err) {
       err.response;

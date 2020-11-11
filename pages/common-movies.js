@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Text, View, ScrollView, Button, TextInput } from "react-native";
+import { Text, View, ScrollView } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { selectGame, SelectCommonMovies } from "../store/movies/selector";
 import { getCommonMovies } from "../store/movies/action";
@@ -9,10 +9,9 @@ import { styles } from "../styles";
 export default function CommonMoviesPage() {
   const dispatch = useDispatch();
   const game = useSelector(selectGame);
-  // console.log("games on this page", game);
   const commonMovies = useSelector(SelectCommonMovies);
 
-  console.log("common Movies", commonMovies);
+  // console.log("common Movies", commonMovies);
 
   useEffect(() => {
     if (game) {

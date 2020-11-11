@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
-import { Text, View, ScrollView, Button, TouchableOpacity } from "react-native";
-import { useSelector, useDispatch } from "react-redux";
+import { Text, View, ScrollView, TouchableOpacity } from "react-native";
+import { useSelector } from "react-redux";
 import { selectGame } from "../store/movies/selector";
 import { styles } from "../styles";
 
 export default function GameCodeDisplay({ navigation }) {
   const game = useSelector(selectGame);
-  // console.log("game on code page", game);
 
   if (game) {
     const codeToJoin = game.code;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Text, View, ScrollView, TouchableOpacity } from "react-native";
+import { Text, View, ScrollView, TouchableOpacity } from "react-native";
 import { getGenres } from "../store/genres/action";
 import { useSelector, useDispatch } from "react-redux";
 import { selectGenres } from "../store/genres/selector";
@@ -14,8 +14,6 @@ export default function GenresPage({ navigation }) {
   const [genreList, set_genreList] = useState([]);
   const game = useSelector(selectGame);
 
-  console.log("gamessssss", game);
-
   useEffect(() => {
     dispatch(getGenres());
   }, []);
@@ -28,7 +26,7 @@ export default function GenresPage({ navigation }) {
     };
 
     const toDoDispatch = () => {
-      dispatch(updateGenres(gameID, genreList)); // put or putch thunk in order to add genres to DB and be able to get them
+      dispatch(updateGenres(gameID, genreList));
     };
 
     const functionCombined = () => {

@@ -1,13 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Text,
   View,
   ScrollView,
-  Button,
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
 import { useSelector, useDispatch } from "react-redux";
 import { selectGame } from "../store/movies/selector";
 import { gameCode } from "../store/games/action";
@@ -15,12 +13,9 @@ import { styles } from "../styles";
 
 export default function StartGamePage({ navigation, route }) {
   const dispatch = useDispatch();
-  const game = useSelector(selectGame);
+  // const game = useSelector(selectGame);
   const [name, onChangeText] = React.useState("");
   const [codeToJoin, set_codeToJoin] = React.useState("");
-
-  // console.log("name", name);
-  // console.log("codeToJoin", codeToJoin);
 
   function functionDispatch() {
     dispatch(gameCode(codeToJoin, name));
