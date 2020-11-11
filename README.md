@@ -10,13 +10,13 @@ It's multiplayer game that helps you to make chosse about which film you wolud l
 * choose genres of films that all players want to see on the next page;
 * on the page with displayed films GA can find titles, descriptions, ratings, and dates of release. That's where you can start choosing whether you do or don't like the film.
 
-# What a Game Participant can do? :star:
+# What a Game Participant can do? :maple_leaf:
 
 * join a game after filling up the field with name and a digit code; 
 * choose whether you like the film or not; 
 * watch the list of filtered films.
 
-# Table of contents
+# Table of contents :herb:
 * App demo
 * Used technologies
 * Goals for this project
