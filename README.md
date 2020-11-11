@@ -1,4 +1,4 @@
-# portfolio-project-client
+# CinemaFolio
 The aap is developed using React Native on the front-end. It has environments for a game admin(someone who starts a game and invites other players) and game participants. Players can join the game by using a game code.
 
 Game admin.
