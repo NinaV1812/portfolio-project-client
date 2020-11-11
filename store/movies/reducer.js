@@ -32,9 +32,11 @@ export default function (state = initialState, action) {
       };
     }
     case COMMON_MOVIES: {
+      console.log("state in reducer", state);
+
       return {
         ...state,
-        commonMovies: action.payload.gameMovies,
+        commonMovies: action.payload,
       };
     }
 

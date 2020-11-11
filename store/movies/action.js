@@ -21,9 +21,9 @@ export const MoviesInGame = (moviesInGame) => ({
   payload: moviesInGame,
 });
 
-export const GetCommonMovies = (movies) => ({
+export const commonChosenMovies = (commonMovies) => ({
   type: COMMON_MOVIES,
-  payload: movies,
+  payload: commonMovies,
 });
 
 export const getMovies = (genres) => {
@@ -48,8 +48,8 @@ export const getCommonMovies = (gameId) => {
     try {
       const response = await axios.get(`${simpleUrl}/game_movie/${gameId}`);
       const movies = response.data;
-      console.log("Yep! here they are", movies);
-      dispatch(GetCommonMovies(movies));
+      // console.log("Yep! here they are", movies);
+      dispatch(commonChosenMovies(movies));
     } catch (err) {
       err.response;
     }
@@ -73,14 +73,15 @@ export const setUpGame = (started, name) => {
   };
 };
 
-export const gameMovies = (movie, gameId) => {
+export const gameMovies = (movieId, gameId, picked) => {
   return async (dispatch, getState) => {
     // console.log("called");
     try {
       // console.log("string");
       const response = await axios.post(`${simpleUrl}/movies_in_game`, {
-        movie: movie,
+        movieId: movieId,
         gameId: gameId,
+        picked: picked,
       });
       console.log("response", response.data);
       // console.log("movie", movie);

@@ -51,7 +51,7 @@ export const getGame = (code) => {
       // console.log("mmm");
 
       const gameDetails = response.data;
-      console.log("Yep!", response.data);
+      // console.log("Yep!", response.data);
       dispatch(GetGame(gameDetails));
     } catch (err) {
       err.response;
