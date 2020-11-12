@@ -3,7 +3,7 @@
 # What's this app about?
 It's multiplayer game that helps you to make chosse about which film you wolud like to watch tonight with you friends. It has environments for a game admin(someone who starts a game and invites other players) and game participants. Players can join the game by using a digit code.
 
-# What a Game admin can do? :star:
+# What a Game Admin can do? :star:
 
 * start a game;
 * share a code with other players, which is displayed on the screen;
@@ -26,6 +26,8 @@ It's multiplayer game that helps you to make chosse about which film you wolud l
 * Datamodel
 * Git version control
 * Backend server repo
+* [GitHub](http://github.com)
+
 
 # App demo
 # Goals for this project
