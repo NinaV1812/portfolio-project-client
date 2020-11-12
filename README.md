@@ -16,24 +16,21 @@ It's multiplayer game that helps you to make chosse about which film you wolud l
 * choose whether you like the film or not; 
 * watch the list of filtered films.
 
-# Table of contents :herb:
-* App demo
-* Used technologies
-* Goals for this project
-* User stories
-* Project board
-* Wireframe
-* Datamodel
-* Git version control
-* Backend server repo
-* [GitHub](http://github.com)
-
+# All you want to know aboutthis project :herb:
 
 # App demo
-# Goals for this project
-# User stories
+# Technologies and Concepts Used
 # Project board
+[Go to the project board](https://github.com/NinaV1812/portfolio-project-client/projects/1)
 # Wireframe
+[Go to the wireframe](https://wireframepro.mockflow.com/view/M07e610eff0de8ed2866ebc74a6d583571602494617574#/page/990ce109c57446eca1690b78430a16ea)
 # Datamodel
+[Follow to the datamodel](https://dbdiagram.io/d/5f843f433a78976d7b774986)
 # Git version control
+I  realized the importance of the solid version control and tried to practice to: 
+* do pull requests with summaries
+* write clear commit messages
+* name branches by feature
+
 # Backend server repo
+[Here yoy can find the backend repository for this project](https://github.com/NinaV1812/portfolio-project-server) 
