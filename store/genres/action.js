@@ -10,10 +10,8 @@ export const fetchGenres = (genres) => ({
 
 export const getGenres = () => {
   return async (dispatch, getState) => {
-    // console.log("get state", getState);
     try {
       const response = await axios.get(`${apiUrl}/genres`);
-      //    console.log("response", response.data.genres)
       const genres = response.data.genres;
       dispatch(fetchGenres(genres));
     } catch (err) {
@@ -31,7 +29,6 @@ export const joinTheGame = () => {
         title,
         overview,
       });
-      // console.log("Yep!", response);
     } catch (err) {
       err.response;
     }

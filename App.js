@@ -49,10 +49,10 @@ export default function App() {
             options={{ title: "Welcome" }}
           />
           <Stack.Screen name="Your game code" component={GameCodeDisplay} />
-          <Stack.Screen name="StartGamePage" component={StartGamePage} />
-          <Stack.Screen name="genres-page" component={GenresPage} />
-          <Stack.Screen name="display-movies" component={DisplayMovies} />
-          <Stack.Screen name="common-movies" component={CommonMoviesPage} />
+          <Stack.Screen name="Join" component={StartGamePage} />
+          <Stack.Screen name="Genres Page" component={GenresPage} />
+          <Stack.Screen name="Movies to Like" component={DisplayMovies} />
+          <Stack.Screen name="Common Movies" component={CommonMoviesPage} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

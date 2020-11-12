@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, View, ScrollView, Button } from "react-native";
+import { Text, View, ScrollView, TouchableOpacity } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { Card } from "react-native-elements";
 import { gameMovies } from "../store/movies/action";
@@ -14,19 +14,16 @@ export default function ThirdPage({ navigation, route }) {
   const game = useSelector(selectGame);
   const movies = useSelector(selectMoviesGames);
   const [movieIdToShow, setMovieIdToShow] = useState(0);
-
-  // console.log("gamesssssss", game);
-
-  // console.log("game movies", movies);
+  // console.log("movies", movies);
 
   useEffect(() => {
     dispatch(getGame(gameCode));
   }, []);
 
-  useEffect(() => {}, []);
   function toDispatch() {
+    const picked = true;
     const movie = movies[movieIdToShow];
-    dispatch(gameMovies(movie, game.id));
+    dispatch(gameMovies(movie.id, game.id, picked));
   }
 
   function changeFilm() {
@@ -67,35 +64,44 @@ export default function ThirdPage({ navigation, route }) {
             <Text>
               {movie.vote_average} {"\n"}
             </Text>
-            <Button
+            <TouchableOpacity
               style={styles.buttonContainer}
-              title="I do like"
               contentContainerStyle={styles.buttonContant}
               onPress={() => {
                 combine();
               }}
-            ></Button>
-            <Button
+            >
+              <Text style={styles.text}>I do like</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
               style={styles.buttonContainer}
-              title="I don't like"
               contentContainerStyle={styles.buttonContant}
               onPress={() => {
                 setMovieIdToShow(movieIdToShow + 1);
               }}
-            ></Button>
+            >
+              <Text style={styles.text}>I don't like</Text>
+            </TouchableOpacity>
           </Card>
-          <Button
+          <TouchableOpacity
             style={styles.buttonContainer}
-            title="I'm done"
             onPress={() => {
-              navigation.navigate("common-movies");
+              navigation.navigate("Common Movies");
             }}
-          ></Button>
+          >
+            <Text style={styles.text}>I'm done</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     );
   }
   {
-    return <Text>Loading</Text>;
+    return (
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.container}>
+          <Text style={styles.text}>Loading</Text>
+        </View>
+      </ScrollView>
+    );
   }
 }
