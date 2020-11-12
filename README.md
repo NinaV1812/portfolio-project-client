@@ -19,6 +19,8 @@ It's multiplayer game that helps you to make chosse about which film you wolud l
 # All you want to know about this project :herb:
 
 # App demo
+<img src="https://github.com/NinaV1812/portfolio-project-client/blob/main/gifs/ezgif.com-video-to-gif%20(1).gif" />
+
 
 # Technologies and Concepts Used
 * React Native
