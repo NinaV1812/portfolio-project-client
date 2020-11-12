@@ -35,4 +35,3 @@ It's multiplayer game that helps you to make chosse about which film you wolud l
 # Datamodel
 # Git version control
 # Backend server repo
-
