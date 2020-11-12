@@ -16,16 +16,27 @@ It's multiplayer game that helps you to make chosse about which film you wolud l
 * choose whether you like the film or not; 
 * watch the list of filtered films.
 
-# All you want to know aboutthis project :herb:
+# All you want to know about this project :herb:
 
 # App demo
+
 # Technologies and Concepts Used
+* React Native
+* Redux
+* Express
+* REST API
+* Sequelize
+* PostgreSQL
+
 # Project board
 [Go to the project board](https://github.com/NinaV1812/portfolio-project-client/projects/1)
+
 # Wireframe
 [Go to the wireframe](https://wireframepro.mockflow.com/view/M07e610eff0de8ed2866ebc74a6d583571602494617574#/page/990ce109c57446eca1690b78430a16ea)
+
 # Datamodel
 [Follow to the datamodel](https://dbdiagram.io/d/5f843f433a78976d7b774986)
+
 # Git version control
 I  realized the importance of the solid version control and tried to practice to: 
 * do pull requests with summaries
