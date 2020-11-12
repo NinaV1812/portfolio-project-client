@@ -19,10 +19,7 @@ It's multiplayer game that helps you to make chosse about which film you wolud l
 # All you want to know about this project :herb:
 
 # App demo
-<img src="https://github.com/NinaV1812/portfolio-project-client/blob/main/gifs/2020-11-11-17-13-46.gif" />
-<img src="https://github.com/NinaV1812/portfolio-project-client/blob/main/gifs/2020-11-11-17-17-50.gif" width="40" height="40" />
-
-
+<img src="https://github.com/NinaV1812/portfolio-project-client/blob/main/gifs/2020-11-11-17-13-46.gif" /> <img src="https://github.com/NinaV1812/portfolio-project-client/blob/main/gifs/2020-11-11-17-17-50.gif" />
 
 # Technologies and Concepts Used
 * React Native
