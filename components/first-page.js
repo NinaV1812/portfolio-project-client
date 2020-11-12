@@ -1,32 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Button, Text, View, ScrollView, TextInput } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
-import { getGenres } from "../store/genres/action";
-
-import { useSelector, useDispatch } from "react-redux";
-import { selectGenres } from "../store/genres/selector";
-// import MyBox from "./check-box-group";
+import React from "react";
+import { Text, View, ScrollView, TouchableOpacity } from "react-native";
+import { useDispatch } from "react-redux";
 import { setUpGame } from "../store/movies/action";
+import { styles } from "../styles";
+import AnimatedInput from "react-native-animated-input";
 
 export default function GameStartPage({ navigation }) {
-  // const genres = useSelector(selectGenres);
   const dispatch = useDispatch();
-  // const [genreList, set_genreList] = useState([]);
-  const started = true; /// also, ask if it is okay to that, so all my games are started in DB.
-  const [name, onChangeText] = useState("My name");
-
-  // useEffect(() => {
-  //   dispatch(getGenres());
-  // }, []);
-
-  // // console.log("gList", genreList);
-
-  // // console.log("genressss", genres);
-
-  console.log("name", name);
-
+  const started = true;
+  const [name, onChangeText] = React.useState("My name");
   const navigator = () => {
-    navigation.navigate("genres-page");
+    navigation.navigate("Your game code");
   };
 
   const toDoDispatch = () => {
@@ -37,27 +21,52 @@ export default function GameStartPage({ navigation }) {
     toDoDispatch();
     navigator();
   };
-
+  // Animated.AnimatedInput(useNativeDriver: true);
   return (
-    <View>
-      <ScrollView>
-        <Text>If you want to start a new game.</Text>
-        <TextInput
-          style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
-          onChangeText={(name) => onChangeText(name)}
-          value={name}
-        />
+    <ScrollView style={styles.scrollView}>
+      <View style={styles.container}>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            paddingHorizontal: 20,
+            marginTop: 10,
+            color: "white",
+          }}
+        >
+          <Text style={styles.text}>If you want to start a new game.</Text>
+          <AnimatedInput
+            style={{ color: "white" }}
+            placeholder="Input your name"
+            valid={name}
+            errorText="Error"
+            onChangeText={(name) => onChangeText(name)}
+            value={name}
+            useNativeDriver={true}
+            styleLabel={{ fontWeight: "600", color: "white" }}
+            styleBodyContent={{ borderBottomWidth: 1.5, color: "white" }}
+          />
 
-        <Button title="Start game" onPress={() => functionCombined()} />
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={styles.buttonContainer}
+            onPress={() => functionCombined()}
+          >
+            <Text style={styles.appButtonText}>Start</Text>
+          </TouchableOpacity>
+        </View>
 
-        <Text>Push if you want to join a game.</Text>
-
-        <Button
-          icon={<Icon name="arrow-right" size={15} color="white" />}
-          title="Join a game "
-          onPress={() => navigation.navigate("StartGamePage")}
-        />
-      </ScrollView>
-    </View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.text}>Push if you want to join a game.</Text>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={styles.buttonContainer}
+            onPress={() => navigation.navigate("Join")}
+          >
+            <Text style={styles.appButtonText}>Join</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </ScrollView>
   );
 }
